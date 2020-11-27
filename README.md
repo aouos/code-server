@@ -1,23 +1,32 @@
-# docker
+# Docker
 
-Basic development environment
+Front-end development environment setup
 
 ---
 
-## use docker images
+## Images infomaiton
+
+- git version `2.25.1`
+
+- nodejs version `14.15.1`
+
+- npm version `6.14.8`
+
+- nrm use `taobao`
+
+---
+
+## Dockerhub
 
 ```bash
-docker pull aouos/code
+docker pull aouos/aofe
 ```
-
 ---
 
-## images infomaiton
+## Build yourself images
 
-1. nodejs `14.15.1`
+- In Dockerfile, uncomment necessary or add instructions that you need to install
 
-2. npm `6.14.8`
+- In the shell folder, You can configure Git information in gitic nad write your own script to add to the command
 
-3. git `2.25.1`
-
----
+- In the Dockerfile sibling directory, `docker built -t < name > .`

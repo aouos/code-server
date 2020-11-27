@@ -1,24 +1,30 @@
+# Use the official image as a parent image.
 FROM ubuntu
+
+ARG name=aofe
 
 # Add author information
 MAINTAINER aouos aouos@qq.com
 
 # Switch the mirror source
 # RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
-ADD sources.list /etc/apt/
+ADD mirrors/sources.list /etc/apt/
+
+ADD shell/gitic /bin
 
 RUN apt-get clean
 
-# Turn off time zone selection
-ENV DEBIAN_FRONTEND = noninteractive
+# use noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-		&& apt-get install -y git \
-		# && git config --global user.name "aouos" \
-		# && git config --global user.email "aouos@qq.com" \
-		&& apt-get install -y curl \
-		&& curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-		&& apt-get install -y nodejs \
-		&& npm install -g nrm \
-		&& nrm use taobao \
-		# && npm install -g @vue/cli \
+	&& apt-get install -y tzdata \
+	&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& apt-get install -y git \
+	&& apt-get install -y curl \
+	&& curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+	&& apt-get install -y nodejs \
+	&& npm install -g nrm \
+	&& nrm use taobao \
+	&& cd /bin \
+	&& chmod 777 gitic

@@ -1,0 +1,4 @@
+#!/bin/sh
+git config --global user.name "aouos"
+git config --global user.email "aouos@qq.com"
+ssh-keygen -t rsa -C "aouos@qq.com"
