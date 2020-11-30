@@ -1,36 +1,32 @@
 # Use the official image as a parent image.
-FROM alpine:3.10
+FROM ubuntu:20.04
 
 ARG name=aofe
 
-ADD server/server.js /home
-
-# node js version
-ENV NODE_VERSION 10.19.0
-
-# The time zone
-ENV Time=Asia/Shanghai
+# workdir
+WORKDIR /home
 
 # Add author information
 MAINTAINER aouos aouos@qq.com
 
-# use noninteractive
-ENV DEBIAN_FRONTEND=noninteractive
+ADD server/server.js /home
 
 # Switch the mirror source
 # RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
-# ADD mirrors/sources.list /etc/apt/
+ADD mirrors/sources.list /etc/apt/
 
-RUN echo http://mirrors.aliyun.com/alpine/v3.10/main/ > /etc/apk/repositories \
-	&& echo http://mirrors.aliyun.com/alpine/v3.10/community/ >> /etc/apk/repositories
+RUN apt-get clean
 
-RUN apk update && apk upgrade \
-	&& apk add --no-cache tzdata \
-	&& ln -fs /usr/share/zoneinfo/${Time} /etc/localtime \
-	&& apk add --no-cache nodejs \
-	&& apk add --no-cache yarn \
-	&& apk add --no-cache npm \
+# use noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+	&& apt-get install -y tzdata \
+	&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& apt-get install -y curl \
+	&& curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+	&& apt-get install -y nodejs \
 	&& npm install -g nrm \
 	&& nrm use taobao
 
-CMD [ "node" ]
+CMD [ "node", "server.js" ]

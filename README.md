@@ -6,13 +6,11 @@ Front-end development environment setup
 
 ## Images infomaiton
 
-- nodejs version `10.19.0`
+- nodejs version `14.15.1`
 
-- npm version `6.13.4`
+- npm version `6.14.8`
 
 - nrm use `taobao`
-
-- yarn version `1.16.0`
 
 ---
 
