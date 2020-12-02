@@ -20,6 +20,7 @@ RUN apt-get clean
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
+	&& mkdir www \
 	&& apt-get install -y tzdata \
 	&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 	&& apt-get install -y curl \
