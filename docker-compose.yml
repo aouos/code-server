@@ -7,6 +7,6 @@ services:
     container_name: aofe
     tty: true
     ports:
-      - "1314:1314"
+      - "80:80"
     volumes: 
       - ./dist:/home/www

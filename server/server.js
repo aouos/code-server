@@ -2,13 +2,22 @@
  * @Author: aouos 
  * @Date: 2020-11-29 16:29:38 
  * @Last Modified by: aouos
- * @Last Modified time: 2020-11-30 17:41:53
+ * @Last Modified time: 2020-12-07 16:40:36
  */
-var http = require('http');
+const http = require('http')
+const fs = require('fs')
+const httpPort = 80
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello World\n');
-}).listen(1314);
-
-console.log('Server running http://localhost:1314');
+http.createServer((req, res) => {
+	try {
+		const data = fs.readFileSync('/home/www/index.html')
+		res.writeHead(200, {
+			'Content-Type': 'text/html; charset=utf-8'
+		})
+		res.end(data)
+	} catch (e) {
+		console.log(e);
+	}
+}).listen(httpPort, () => {
+	console.log('Server listening on: http://localhost:%s', httpPort)
+})

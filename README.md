@@ -4,7 +4,7 @@
 
 - Images size `300.96 MB`
 
-- Expose port `1314`
+- Expose port `80`
 
 ---
 
@@ -33,4 +33,4 @@ docker pull aouos/aofe
 
 ## Build yourself images
 
-- In the Dockerfile sibling directory, `docker built -t < name > .`
+- In the Dockerfile sibling directory, `docker-compose up -d`

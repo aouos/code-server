@@ -31,6 +31,6 @@ RUN apt-get update \
 	&& npm install -g yarn \
 	&& yarn config set registry https://registry.npm.taobao.org
 
-EXPOSE 1314
+EXPOSE 80
 
 CMD [ "node", "server.js" ]
