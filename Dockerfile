@@ -20,17 +20,17 @@ RUN apt-get clean
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-	&& mkdir www \
-	&& apt-get install -y tzdata \
-	&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-	&& apt-get install -y curl \
-	&& curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-	&& apt-get install -y nodejs \
-	&& npm install -g nrm \
-	&& nrm use taobao \
-	&& npm install -g yarn \
-	&& yarn config set registry https://registry.npm.taobao.org
+  && mkdir www \
+  && apt-get install -y tzdata \
+  && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && apt-get install -y curl \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y nodejs \
+  && npm install -g nrm \
+  && nrm use taobao \
+  && npm install -g yarn \
+  && yarn config set registry https://registry.npm.taobao.org
 
-EXPOSE 80
+EXPOSE 1314
 
 CMD [ "node", "server.js" ]

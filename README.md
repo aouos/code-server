@@ -4,7 +4,7 @@
 
 - Images size `300.96 MB`
 
-- Expose port `80`
+- Expose port `1314`
 
 ---
 
