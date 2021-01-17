@@ -1,36 +1,31 @@
 # Use the official image as a parent image.
-FROM ubuntu:20.04
+FROM alpine:3.12
 
 # workdir
-WORKDIR /home
+WORKDIR /home/www
 
 # Add author information
-LABEL author=aouos
+ARG name=aofe
 
-# simple server
-ADD server/server.js /home
-
-# Switch the mirror source
-# RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
-ADD mirrors/sources.list /etc/apt/
-
-RUN apt-get clean
+# The time zone
+ENV Time=Asia/Shanghai
 
 # use noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update \
-  && mkdir www \
-  && apt-get install -y tzdata \
-  && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-  && apt-get install -y curl \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-  && apt-get install -y nodejs \
-  && npm install -g nrm \
-  && nrm use taobao \
-  && npm install -g yarn \
-  && yarn config set registry https://registry.npm.taobao.org
+# Modify the mirror source
+RUN echo http://mirrors.aliyun.com/alpine/v3.12/main/ > /etc/apk/repositories \
+  && echo http://mirrors.aliyun.com/alpine/v3.12/community/ >> /etc/apk/repositories
 
-EXPOSE 1314
+RUN apk update && apk upgrade \
+  && apk add --no-cache tzdata \
+  && ln -fs /usr/share/zoneinfo/${Time} /etc/localtime \
+  && apk add --no-cache nginx \
+  && mkdir /var/run/nginx && touch /var/run/nginx/nginx.pid \
+  && apk add --no-cache nodejs \
+  && apk add --no-cache npm \
+  && apk add --no-cache yarn
 
-CMD [ "node", "server.js" ]
+EXPOSE 8080
+
+CMD ["nginx", "-g", "daemon off;"]

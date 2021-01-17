@@ -1,12 +1,14 @@
 # yaml 配置
 version: '3'
 services:
-  node:
+  env:
     build: .
     restart: always
     container_name: aofe
     tty: true
     ports:
-      - "1314:1314"
+      - "8080:8080"
     volumes: 
       - ./dist:/home/www
+      - ./nginx/conf.d/aofe.conf:/etc/nginx/conf.d/aofe.conf
+      - ./nginx/log:/var/log/nginx/

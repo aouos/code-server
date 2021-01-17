@@ -1,26 +1,20 @@
 # Docker
 
-- Front-end development environment setup
-
-- Images size `300.96 MB`
-
-- Expose port `1314`
+- 😛 Front-end development environment setup
 
 ---
 
 ## Images infomaiton
 
-- nodejs version `14.15.1`
+- from alpine `3.12`
 
-- npm version `6.14.8`
+- nginx version `1.18.0`
 
-- npm install `nrm`
+- nodejs version `12.20.1`
 
-- nrm use `taobao`
+- npm version `6.14.10`
 
-- yarn version `1.22.10`
-
-- yarn set registry `taobao`
+- yarn version `1.22.4`
 
 ---
 
