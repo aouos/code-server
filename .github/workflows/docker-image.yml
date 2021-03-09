@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - name: Build the Docker image
-      run: docker build . --tag aouos/aofe
-    - name: Login to Dockerhub
+      run: docker build . --tag aouos/codesr
+    - name: Login to Docker hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Push Image
-      run: docker push aouos/aofe
+    - name: Push image
+      run: docker push aouos/codesr

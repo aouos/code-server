@@ -17,8 +17,8 @@ ENV Time=Asia/Shanghai
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-	# && apt-get install -y tzdata \
-	# && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	&& apt-get install -y tzdata \
+	&& ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   && apt-get install -y wget \
   && wget https://github.com/cdr/code-server/releases/download/v3.9.1/code-server-3.9.1-linux-amd64.tar.gz \
   && tar -xvzf code-server-3.9.1-linux-amd64.tar.gz \
