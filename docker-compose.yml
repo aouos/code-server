@@ -4,11 +4,9 @@ services:
   env:
     build: .
     restart: always
-    container_name: aofe
+    container_name: codesr
     tty: true
     ports:
       - "8080:8080"
     volumes: 
-      - ./dist:/home/www
-      - ./nginx/conf.d/aofe.conf:/etc/nginx/conf.d/aofe.conf
-      - ./nginx/log:/var/log/nginx/
+      - ./code:/home/aouos
