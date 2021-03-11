@@ -1,10 +1,10 @@
 # yaml 配置
 version: '3'
 services:
-  env:
+  vscode:
     build: .
     restart: always
-    container_name: codesr
+    container_name: vscode
     tty: true
     ports:
       - "8080:8080"

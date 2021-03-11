@@ -26,8 +26,10 @@ RUN apt-get update \
   && mkdir /usr/lib/codesr \
   && cp -r /home/aouos/code-server-3.9.1-linux-amd64/* /usr/lib/codesr/ \
   && ln -s /usr/lib/codesr/code-server /usr/bin/code-server \
-  && rm -r code-server-3.9.1-linux-amd64
+  && rm -r code-server-3.9.1-linux-amd64 \
+  && apt-get install -y nodejs \
+  && apt-get install -y npm
 
 EXPOSE 8080
 
-# CMD ["nohup", "code-server", "--host", "0.0.0.0", "--port", "8080", "--auth", "none", "&"]
+CMD ["nohup", "code-server", "--host", "0.0.0.0", "--port", "8080", "--auth", "none", "&"]

@@ -1,8 +1,8 @@
-# CodeServer
+# CodeServer_VScode
 
 ## Demo Link
 
-😜Experience [VScode](http://vscode.aouos.com)
+😜Experience [VScode](http://vscode.aouos.com) 
 
 ---
 
@@ -27,7 +27,7 @@ docker build --tag <name> .
 Create and start the container 
 
 ```bash
-docker run -it -p 8080:8080 --name codesr codesr bash
+docker run -it -p 8080:8080 --name codesr <name> bash
 ```
 
 Start code-server
@@ -55,7 +55,7 @@ docker-compose up -d
 ---
 
 ## Nginx proxy
-proxy prot 8080
+proxy port 8080
 
 ```shell
 server {
