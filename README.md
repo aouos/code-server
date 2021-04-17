@@ -11,7 +11,7 @@
 pull image from dockerhub
 
 ```bash
-docker pull aouos/codesr
+docker pull aouos/code-server
 ```
 
 ---
