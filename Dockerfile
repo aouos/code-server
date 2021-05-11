@@ -13,11 +13,11 @@ MAINTAINER aouos
 ARG name=code-server
 
 ADD sources.list /etc/apt/
-ADD coderun /usr/bin
+ADD coderun /usr/local/bin/
 
 # The time zone
 ENV timezone=Asia/Shanghai
-ENV version=3.9.3
+ENV version=3.10.0
 
 # use noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -29,11 +29,11 @@ RUN apt-get update \
   && wget https://github.com/cdr/code-server/releases/download/v$version/code-server-$version-linux-amd64.tar.gz \
   && tar -xvzf code-server-$version-linux-amd64.tar.gz \
   && rm code-server-$version-linux-amd64.tar.gz \
-  && mkdir /usr/lib/codesr \
-  && cp -r /home/aouos/code-server-$version-linux-amd64/* /usr/lib/codesr/ \
-  && ln -s /usr/lib/codesr/code-server /usr/bin/code-server \
+  && mkdir /usr/lib/code-server-$version-linux-amd64 \
+  && cp -r /home/aouos/code-server-$version-linux-amd64/* /usr/lib/code-server-$version-linux-amd64/ \
+  && ln -s /usr/lib/code-server-$version-linux-amd64/code-server /usr/bin/code-server \
   && rm -r code-server-$version-linux-amd64 \
-  && cd /usr/bin \
+  && cd /usr/local/bin \
   && chmod 777 coderun
 
 EXPOSE 8080

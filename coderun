@@ -1,1 +1,2 @@
+#!/bin/bash
 nohup code-server --host 0.0.0.0 --port 8080 --auth none >> vscode.log 2>&1 &
