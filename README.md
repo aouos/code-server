@@ -6,17 +6,13 @@
 
 ---
 
-## Dockerhub
+## image
 
-pull image from dockerhub
+pull image from docker hub
 
 ```bash
 docker pull aouos/code-server
 ```
-
----
-
-## Docker command
 
 Build image
 
@@ -24,10 +20,12 @@ Build image
 docker build --tag <name> .
 ```
 
-Create and start the container 
+---
+
+## Create and start the container 
 
 ```bash
-docker run -it -p 8080:8080 --name codesr <name> bash
+docker run -it -p 8080:8080 --name <code-server name> <name> bash
 ```
 
 Start code-server
@@ -39,7 +37,7 @@ code-server
 Start in the background 
 
 ```bash
-nohup code-server --host 0.0.0.0 --port 8080 --auth none &
+nohup code-server >> /root/codeserver.log 2>&1 &
 ```
 
 ---
