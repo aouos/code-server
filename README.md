@@ -2,7 +2,11 @@
 
 ## Demo Link
 
-😜Experience [VScode](http://vscode.aouos.com) 
+😜 Experience [VScode](http://vscode.aouos.com) 
+
+🎨 Preview effect
+
+![vacode in browser](./vscode.png)
 
 ---
 
@@ -25,7 +29,7 @@ docker build --tag <name> .
 ## Create and start the container 
 
 ```bash
-docker run -it -p 8080:8080 --name <code-server name> <name> bash
+docker run -it -p 8080:8080 --name <name> <code-server name> bash
 ```
 
 Start code-server
